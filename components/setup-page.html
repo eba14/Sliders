@@ -1,0 +1,124 @@
+<div class="game-setup">
+  <header class="hero-section">
+    <div class="logo-container">
+      <div class="css-logo" role="img" aria-label="Sliders Game Logo">
+        <div class="logo-text">
+          <span class="letter" style="animation-delay: 0s;">S</span>
+          <span class="letter" style="animation-delay: 0.1s;">l</span>
+          <span class="letter" style="animation-delay: 0.2s;">i</span>
+          <span class="letter" style="animation-delay: 0.3s;">d</span>
+          <span class="letter" style="animation-delay: 0.4s;">e</span>
+          <span class="letter" style="animation-delay: 0.5s;">r</span>
+          <span class="letter" style="animation-delay: 0.6s;">s</span>
+        </div>
+        <div class="animated-tiles">
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+          <div class="tile"></div>
+        </div>
+      </div>
+    </div>
+    <p class="hero-subtitle">Strategic tile-shifting game that challenges your mind!</p>
+  </header>
+
+  <div class="main-content">
+    <div class="content-left">
+      <div class="quick-start">
+        <h2>🎯 Quick Start</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <p>Choose difficulty or Progressive Mode</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <p>Match the goal pattern to advance</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <p>Complete all levels in Progressive Mode</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-rules">
+        <h2>🎮 How to Play</h2>
+        <div class="example-boards">
+          <div class="example-board">
+            <h4>Starting Board</h4>
+            <div class="mini-grid">
+              <div class="mini-tile">2</div>
+              <div class="mini-tile">1</div>
+              <div class="mini-tile">3</div>
+              <div class="mini-tile">5</div>
+              <div class="mini-tile empty"></div>
+              <div class="mini-tile">6</div>
+              <div class="mini-tile">4</div>
+              <div class="mini-tile">7</div>
+              <div class="mini-tile">8</div>
+            </div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="example-board">
+            <h4>Goal Board</h4>
+            <div class="mini-grid">
+              <div class="mini-tile">1</div>
+              <div class="mini-tile">2</div>
+              <div class="mini-tile">3</div>
+              <div class="mini-tile">4</div>
+              <div class="mini-tile">5</div>
+              <div class="mini-tile">6</div>
+              <div class="mini-tile">7</div>
+              <div class="mini-tile">8</div>
+              <div class="mini-tile empty"></div>
+            </div>
+          </div>
+        </div>
+        <ul>
+          <li>Click tiles next to the empty space to move them there</li>
+          <li>Arrange tiles to match the goal pattern</li>
+          <li><strong>Progressive Mode:</strong> Start at 3×3, advance through each size up to 7×7</li>
+          <li>Use strategy - every move counts!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-right">
+      <div class="difficulty-selector">
+        <h2>Choose Your Challenge</h2>
+        <div class="difficulty-grid">
+          <div class="difficulty-option" data-size="3">
+            <div class="preview-grid size-3"></div>
+            <h3>3×3</h3>
+          </div>
+          <div class="difficulty-option" data-size="4">
+            <div class="preview-grid size-4"></div>
+            <h3>4×4</h3>
+          </div>
+          <div class="difficulty-option" data-size="5">
+            <div class="preview-grid size-5"></div>
+            <h3>5×5</h3>
+          </div>
+          <div class="difficulty-option" data-size="6">
+            <div class="preview-grid size-6"></div>
+            <h3>6×6</h3>
+          </div>
+          <div class="difficulty-option" data-size="7">
+            <div class="preview-grid size-7"></div>
+            <h3>7×7</h3>
+          </div>
+          <div class="difficulty-option progressive-mode" data-size="progressive">
+            <div class="preview-grid progressive-preview"></div>
+            <h3>Progressive</h3>
+          </div>
+        </div>
+        <button id="start-game-button">Start Playing</button>
+      </div>
+    </div>
+  </div>
+</div>

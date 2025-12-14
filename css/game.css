@@ -1,0 +1,119 @@
+/* Game Screen Styles */
+.game-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#timer-display {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-size: 1.8em;
+  margin: 10px 0;
+  color: var(--primary-red);
+  text-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.puzzle-and-goal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  margin: 5px 0;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 1 auto;
+  overflow: visible;
+}
+
+.puzzle-and-goal .game-wrapper,
+.puzzle-and-goal .goal-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 20, 60, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#shuffle-button,
+#change-difficulty-button,
+#new-game-button,
+#rules-button {
+  padding: 15px 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  background: linear-gradient(145deg, var(--primary-red), var(--dark-red));
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+}
+
+#shuffle-button:hover,
+#change-difficulty-button:hover,
+#new-game-button:hover,
+#rules-button:hover {
+  background: linear-gradient(145deg, var(--light-red), var(--primary-red));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+}
+
+#congratulations-message,
+#progress-notification {
+  font-family: 'Barlow Semi Condensed', serif;
+  font-size: 2em;
+  color: var(--light-red);
+  margin-top: 20px;
+  text-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+h3 {
+  color: var(--primary-red);
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  text-shadow: 0 0 8px rgba(220, 20, 60, 0.3);
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}

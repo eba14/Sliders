@@ -1,0 +1,13 @@
+:root {
+  --primary-red: #dc143c;
+  --dark-red: #8b0000;
+  --light-red: #ff6b6b;
+  --white: #ffffff;
+  --black: #000000;
+  --tile-size: min(8vh, 60px);
+  --gap-size: 3px;
+  --font-size: 1.2em;
+  --puzzle-size: 3;
+  --tile-color: #87ceeb;
+  --tile-color-dark: #4682b4;
+}

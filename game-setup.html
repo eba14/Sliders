@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Puzzle - Setup</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-setup">
+        <div class="main-content">
+            <div class="logo-section">
+                <div class="css-logo">
+                    <div class="logo-text">SLIDERS</div>
+                    <div class="logo-grid">
+                        <div class="tile">1</div>
+                        <div class="tile">2</div>
+                        <div class="tile">3</div>
+                        <div class="tile">4</div>
+                        <div class="tile">5</div>
+                        <div class="tile">6</div>
+                        <div class="tile">7</div>
+                        <div class="tile">8</div>
+                        <div class="tile empty"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="setup-section">
+                <h1 class="game-title">Choose Your Challenge</h1>
+                <div class="difficulty-grid">
+                    <button class="difficulty-button" data-size="3">
+                        <span class="difficulty-name">Easy</span>
+                        <span class="difficulty-desc">3×3 Grid</span>
+                    </button>
+                    <button class="difficulty-button" data-size="4">
+                        <span class="difficulty-name">Medium</span>
+                        <span class="difficulty-desc">4×4 Grid</span>
+                    </button>
+                    <button class="difficulty-button" data-size="5">
+                        <span class="difficulty-name">Hard</span>
+                        <span class="difficulty-desc">5×5 Grid</span>
+                    </button>
+                    <button class="difficulty-button" data-size="6">
+                        <span class="difficulty-name">Expert</span>
+                        <span class="difficulty-desc">6×6 Grid</span>
+                    </button>
+                </div>
+                <button id="start-game-button" disabled>Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

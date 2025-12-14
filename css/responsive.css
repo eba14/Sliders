@@ -1,0 +1,50 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .css-logo {
+    width: 400px;
+    height: 140px;
+  }
+  
+  .logo-text {
+    font-size: 2.2em;
+  }
+  
+  .tile {
+    width: 25px;
+    height: 25px;
+    font-size: 11px;
+  }
+  
+  .difficulty-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .puzzle-and-goal {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  :root {
+    --tile-size: min(7vh, 45px);
+    --gap-size: 2px;
+    --font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .difficulty-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  :root {
+    --tile-size: min(6vh, 35px);
+    --gap-size: 2px;
+    --font-size: 0.9em;
+  }
+}

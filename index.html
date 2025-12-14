@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sliders - A strategic tile-shifting puzzle game with multiple difficulty levels" />
+  <title>Sliders - Puzzle Game</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="setup-page">
+  <input type="hidden" id="puzzle-size" value="">
+  
+  <!-- Components will be loaded here -->
+  <div id="app-container"></div>
+
+  <script>
+    // Simple component loader
+    async function loadComponent(path) {
+      const response = await fetch(path);
+      return response.text();
+    }
+
+    async function initApp() {
+      const container = document.getElementById('app-container');
+      
+      // Load all components
+      const [setupPage, gameScreen, modals] = await Promise.all([
+        loadComponent('components/setup-page.html'),
+        loadComponent('components/game-screen.html'),
+        loadComponent('components/modals.html')
+      ]);
+      
+      // Insert components
+      container.innerHTML = setupPage + gameScreen + modals;
+      
+      // Load main JS after components are ready
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = 'js/main.js';
+      script.onload = () => {
+        // Dispatch custom event to signal components are ready
+        document.dispatchEvent(new CustomEvent('componentsLoaded'));
+      };
+      document.body.appendChild(script);
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>

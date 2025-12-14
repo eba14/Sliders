@@ -1,0 +1,23 @@
+<div class="game-container" style="display: none;">
+  <div id="timer-display">Time: 00:00</div>
+  <div class="puzzle-and-goal">
+    <div class="game-wrapper">
+      <h3>Current Board</h3>
+      <div id="puzzle-container" role="grid" aria-label="Current puzzle state"></div>
+    </div>
+    <div class="goal-wrapper">
+      <h3>Goal Board</h3>
+      <div id="goal-container" role="grid" aria-label="Target puzzle state"></div>
+    </div>
+  </div>
+  <div class="controls-container">
+    <div class="controls">
+      <button id="shuffle-button">Shuffle</button>
+      <button id="new-game-button" style="display: none;">New Game</button>
+      <button id="rules-button">Rules</button>
+      <button id="change-difficulty-button">Leave Game</button>
+    </div>
+    <div id="congratulations-message" style="display: none;" role="alert" aria-live="polite">🎉 Congratulations, you solved the puzzle! 🎉</div>
+    <div id="progress-notification" style="display: none;" role="alert" aria-live="polite">🎉 Puzzle Completed! Next puzzle incoming... 🎉</div>
+  </div>
+</div>
