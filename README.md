@@ -13,11 +13,7 @@ A modern, responsive web-based sliding puzzle game with multiple difficulty leve
 
 ## 🚀 Live Demo
 
-[Play Sliders Game](https://eba14.github.io/Sliders)
-
-## 📸 Screenshots
-
-*Screenshots coming soon*
+<a href="https://eba14.github.io/Sliders" target="_blank">Play Sliders Game</a>
 
 ## 🎯 How to Play
 
@@ -38,34 +34,13 @@ A modern, responsive web-based sliding puzzle game with multiple difficulty leve
 ```
 sliders/
 ├── components/           # HTML components
-│   ├── setup-page.html
-│   ├── game-screen.html
-│   └── modals.html
 ├── css/                 # Modular stylesheets
-│   ├── variables.css
-│   ├── base.css
-│   ├── setup.css
-│   ├── game.css
-│   └── ...
 ├── js/                  # JavaScript modules
-│   ├── main.js
-│   ├── game-state.js
-│   ├── puzzle-logic.js
-│   ├── ui-handlers.js
-│   └── ...
-├── favicon.svg
 ├── index.html
 └── styles.css
 ```
 
 ## 🚀 Getting Started
-
-### Prerequisites
-
-- A modern web browser
-- A local web server (for development)
-
-### Installation
 
 1. **Clone the repository**
    ```bash
@@ -75,80 +50,31 @@ sliders/
 
 2. **Serve the files**
    ```bash
-   # Using Python 3
    python -m http.server 8000
-   
-   # Using Node.js (if you have http-server installed)
-   npx http-server
-   
-   # Using PHP
-   php -S localhost:8000
    ```
 
 3. **Open in browser**
    Navigate to `http://localhost:8000`
 
-### Deployment
-
-The game can be deployed to any static hosting service:
-
-- **GitHub Pages**: Enable Pages in repository settings
-- **Netlify**: Drag and drop the folder or connect your repository
-- **Vercel**: Import your GitHub repository
-
 ## 🎮 Game Features
 
 ### Difficulty Levels
-- **3×3**: Perfect for beginners (8 tiles)
-- **4×4**: Moderate challenge (15 tiles)
-- **5×5**: Advanced puzzle (24 tiles)
-- **6×6**: Expert level (35 tiles)
-- **7×7**: Master challenge (48 tiles)
+- **3×3**: Perfect for beginners
+- **4×4**: Moderate challenge
+- **5×5**: Advanced puzzle
+- **6×6**: Expert level
+- **7×7**: Master challenge
 
 ### Progressive Mode
 - Start with 3×3 and automatically advance through each difficulty
 - Track individual level completion times
-- Complete all levels to see your total time
-
-### Smart Puzzle Generation
-- Ensures all generated puzzles are solvable
-- Uses inversion counting algorithm for validation
-- Prevents trivial starting positions
-
-## 🔧 Development
-
-### Code Organization
-
-The project uses a modular architecture:
-
-- **Component-based HTML**: Separate files for different UI sections
-- **CSS Modules**: Organized stylesheets for maintainability
-- **ES6 Modules**: Clean separation of game logic
-
-### Key Algorithms
-
-- **Solvability Check**: Implements inversion counting for puzzle validation
-- **Shuffle Algorithm**: Fisher-Yates shuffle with solvability verification
-- **Move Validation**: Efficient adjacent tile detection
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Inspired by the classic 15-puzzle game
+- Inspired by classic sliding puzzle games
 - Built with modern web technologies
 - Designed for accessibility and user experience
 
 ## 📞 Contact
 
-Project Link: [https://github.com/eba14/Sliders](https://github.com/eba14/Sliders)
+Project Link: <a href="https://github.com/eba14/Sliders" target="_blank">https://github.com/eba14/Sliders</a>
