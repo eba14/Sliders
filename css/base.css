@@ -38,8 +38,8 @@ body {
 body.setup-page {
   background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
   background-attachment: fixed;
-  background-size: 110% 110%;
-  background-position: -5% -5%;
+  background-size: cover;
+  background-position: center;
 }
 
 body.game-page {

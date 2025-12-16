@@ -12,7 +12,7 @@
 
 .css-logo {
   width: 600px;
-  height: 220px;
+  height: 240px;
   margin: 0 auto;
   position: relative;
   display: flex;
@@ -123,21 +123,21 @@
   border: 2px solid rgba(255,255,255,0.2);
 }
 
-.tile:nth-child(1) { top: 15px; left: 260px; background: linear-gradient(145deg, #dc143c, #8b0000); animation-delay: 0s; }
+.tile:nth-child(1) { top: 25px; left: 260px; background: linear-gradient(145deg, #dc143c, #8b0000); animation-delay: 0s; }
 .tile:nth-child(1)::after { content: '1'; }
-.tile:nth-child(2) { top: 15px; right: 70px; background: linear-gradient(145deg, #ff6b6b, #dc143c); animation-delay: 0.5s; }
+.tile:nth-child(2) { top: 25px; right: 70px; background: linear-gradient(145deg, #ff6b6b, #dc143c); animation-delay: 0.5s; }
 .tile:nth-child(2)::after { content: '2'; }
-.tile:nth-child(3) { top: 90px; right: 30px; background: linear-gradient(145deg, #ff4757, #c44569); animation-delay: 1s; }
+.tile:nth-child(3) { top: 100px; right: 30px; background: linear-gradient(145deg, #ff4757, #c44569); animation-delay: 1s; }
 .tile:nth-child(3)::after { content: '3'; }
-.tile:nth-child(4) { top: 165px; right: 110px; background: linear-gradient(145deg, #e55039, #b33939); animation-delay: 1.5s; }
+.tile:nth-child(4) { top: 175px; right: 110px; background: linear-gradient(145deg, #e55039, #b33939); animation-delay: 1.5s; }
 .tile:nth-child(4)::after { content: '4'; }
-.tile:nth-child(5) { top: 165px; left: 280px; background: linear-gradient(145deg, #ff3838, #d63031); animation-delay: 2s; }
+.tile:nth-child(5) { top: 175px; left: 280px; background: linear-gradient(145deg, #ff3838, #d63031); animation-delay: 2s; }
 .tile:nth-child(5)::after { content: '5'; }
-.tile:nth-child(6) { top: 165px; left: 80px; background: linear-gradient(145deg, #ff6348, #e17055); animation-delay: 2.5s; }
+.tile:nth-child(6) { top: 175px; left: 80px; background: linear-gradient(145deg, #ff6348, #e17055); animation-delay: 2.5s; }
 .tile:nth-child(6)::after { content: '6'; }
-.tile:nth-child(7) { top: 80px; left: 30px; background: linear-gradient(145deg, #ff7675, #d63031); animation-delay: 0.8s; }
+.tile:nth-child(7) { top: 90px; left: 30px; background: linear-gradient(145deg, #ff7675, #d63031); animation-delay: 0.8s; }
 .tile:nth-child(7)::after { content: '7'; }
-.tile:nth-child(8) { top: 15px; left: 50px; background: linear-gradient(145deg, #fab1a0, #e17055); animation-delay: 1.2s; }
+.tile:nth-child(8) { top: 25px; left: 50px; background: linear-gradient(145deg, #fab1a0, #e17055); animation-delay: 1.2s; }
 .tile:nth-child(8)::after { content: '8'; }
 
 @keyframes float {
