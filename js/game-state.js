@@ -8,7 +8,8 @@ export const gameState = {
     isProgressiveMode: false,
     currentProgressiveLevel: 3,
     progressiveTimes: [],
-    levelStartTime: 0
+    levelStartTime: 0,
+    isTransitioning: false
 };
 
 export function resetGameState() {

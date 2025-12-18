@@ -65,7 +65,7 @@ export function shuffleTiles() {
 }
 
 export function moveTile(clickedIndex) {
-    if (gameState.isGameOver) {
+    if (gameState.isGameOver || gameState.isTransitioning) {
         return;
     }
     const rowClicked = Math.floor(clickedIndex / gameState.puzzleSize);
@@ -127,12 +127,14 @@ function handlePuzzleSolved() {
             // Show progress notification
             const progressNotification = document.getElementById('progress-notification');
             progressNotification.style.display = 'block';
+            gameState.isTransitioning = true;
             
             setTimeout(() => {
                 progressNotification.style.display = 'none';
                 gameState.currentProgressiveLevel++;
                 initializePuzzle(gameState.currentProgressiveLevel);
                 shuffleTiles();
+                gameState.isTransitioning = false;
             }, 2000);
         } else {
             stopTimer();
