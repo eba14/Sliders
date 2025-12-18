@@ -11,7 +11,7 @@ A modern, responsive web-based sliding puzzle game with multiple difficulty leve
 - **Timer System**: Track your solving time for each puzzle
 - **Modern UI**: Clean, animated interface with CSS-only logo
 
-## 🚀 Live Demo
+## 🚀 Live Game
 
 <a href="https://eba14.github.io/Sliders" target="_blank">Play Sliders Game</a>
 

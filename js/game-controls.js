@@ -105,7 +105,7 @@ export function moveTile(clickedIndex) {
             if (checkSolved()) {
                 handlePuzzleSolved();
             }
-        }, 200);
+        }, 100);
     } else {
         // Shake animation for invalid moves
         const clickedTile = puzzleContainer.children[clickedIndex];
