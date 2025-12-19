@@ -18,7 +18,7 @@ A modern, responsive web-based sliding puzzle game with multiple difficulty leve
 ## 🎯 How to Play
 
 1. **Choose Your Challenge**: Select a difficulty level (3×3 to 7×7) or try Progressive Mode
-2. **Move Tiles**: Click on tiles adjacent to the empty space to slide them
+2. **Move Tiles**: Click on tiles adjacent to the empty space to slide them in that location
 3. **Match the Goal**: Arrange tiles to match the target pattern shown on the right
 4. **Progressive Mode**: Complete all levels from 3×3 to 7×7 in sequence
 
