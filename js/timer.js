@@ -44,3 +44,12 @@ export function setTime(newSeconds, newMinutes) {
     seconds = newSeconds;
     minutes = newMinutes;
 }
+
+export function pauseTimer() {
+    clearInterval(timer);
+}
+
+export function resumeTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(updateTimer, 1000);
+}

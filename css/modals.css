@@ -26,16 +26,30 @@
 .close {
   color: var(--white);
   float: right;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
   cursor: pointer;
   position: absolute;
-  right: 20px;
-  top: 15px;
+  right: 15px;
+  top: 10px;
+  transition: all 0.3s ease;
+  padding: 8px 10px;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 20, 60, 0.2);
+  border: 1px solid rgba(220, 20, 60, 0.3);
 }
 
 .close:hover {
-  color: var(--light-red);
+  color: var(--white);
+  background: rgba(255, 50, 90, 0.8);
+  border-color: rgba(255, 50, 90, 1);
+  box-shadow: 0 0 15px rgba(255, 50, 90, 0.6);
+  transform: scale(1.1);
 }
 
 .rules-content h3 {
@@ -87,11 +101,129 @@
 }
 
 .confirm-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(255, 50, 90, 0.6);
+  background: linear-gradient(145deg, #ff4d6d, #cc0000);
 }
 
 .cancel-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 20px rgba(100, 100, 100, 0.5);
+  background: linear-gradient(145deg, #888, #555);
+}
+
+/* Validation Error */
+.validation-error {
+  background: linear-gradient(145deg, #dc143c, #8b0000);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+  animation: errorPulse 0.5s ease-in-out;
+}
+
+@keyframes errorPulse {
+  0% { transform: scale(0.95); opacity: 0; }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.countdown-content {
+  text-align: center;
+  color: white;
+}
+
+.countdown-number {
+  font-size: 8rem;
+  font-weight: bold;
+  color: var(--primary-red);
+  text-shadow: 0 0 30px rgba(220, 20, 60, 0.8);
+}
+
+.countdown-text {
+  font-size: 2rem;
+  margin-top: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+@keyframes countdownSlideIn {
+  0% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+  50% { transform: translateY(10px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes countdownSlideOut {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(100px) scale(0.5); opacity: 0; }
+}
+
+@keyframes countdownFadeSlide {
+  0% { 
+    transform: translateY(-50px) scale(0.7); 
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% { 
+    transform: translateY(0) scale(1); 
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes countdownSlideDown {
+  0% { 
+    transform: translateY(0) scale(1); 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(80px) scale(0.8); 
+    opacity: 0;
+  }
+}
+
+@keyframes countdownSlide {
+  0% { 
+    transform: scale(0.3) translateY(-100px); 
+    opacity: 0;
+    filter: blur(10px);
+  }
+  50% { 
+    transform: scale(1.2) translateY(0); 
+    filter: blur(0);
+  }
+  100% { 
+    transform: scale(1) translateY(0); 
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

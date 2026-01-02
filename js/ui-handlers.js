@@ -35,10 +35,24 @@ function setupDifficultySelection() {
 
 function setupGameControls() {
     startGameButton.addEventListener('click', () => {
+        const selectedValue = difficultySelector.value;
+        const validationError = document.getElementById('validation-error');
+        
+        // Validate that a difficulty is selected
+        if (!selectedValue) {
+            validationError.style.display = 'block';
+            setTimeout(() => {
+                validationError.style.display = 'none';
+            }, 3000);
+            return;
+        }
+        
+        // Hide validation error if shown
+        validationError.style.display = 'none';
+        
         document.body.className = 'game-page';
         gameSetup.style.display = 'none';
         gameContainer.style.display = 'flex';
-        const selectedValue = difficultySelector.value;
         
         if (selectedValue === 'progressive') {
             setProgressiveMode(true);
@@ -48,11 +62,17 @@ function setupGameControls() {
             document.getElementById('timer-display').textContent = 'Time: 00:00';
             initializePuzzle(3);
             shuffleTiles();
-            startTimer();
+            showGameStartCountdown(() => {
+                startTimer();
+            });
         } else {
             setProgressiveMode(false);
             initializePuzzle(parseInt(selectedValue));
             shuffleTiles();
+            showGameStartCountdown(() => {
+                resetTimer();
+                startTimer();
+            });
         }
     });
 
@@ -62,6 +82,12 @@ function setupGameControls() {
         shuffleButton.style.display = 'block';
         newGameButton.style.display = 'none';
         congratulationsMessage.style.display = 'none';
+        // Reset puzzle highlight
+        const puzzleContainer = document.getElementById('puzzle-container');
+        puzzleContainer.style.transition = '';
+        puzzleContainer.style.background = '';
+        puzzleContainer.style.border = '';
+        puzzleContainer.style.boxShadow = '';
         initializePuzzle(gameState.puzzleSize);
         shuffleTiles();
     });
@@ -134,3 +160,83 @@ function setupRulesModal() {
         }
     });
 }
+
+// Countdown functionality
+function showGameStartCountdown(callback) {
+    const countdownOverlay = document.getElementById('countdown-overlay');
+    const countdownNumber = document.querySelector('.countdown-number');
+    const countdownText = document.querySelector('.countdown-text');
+    
+    countdownOverlay.style.display = 'flex';
+    countdownText.textContent = 'Get Ready!';
+    
+    let count = 3;
+    countdownNumber.textContent = count;
+    countdownNumber.style.animation = 'countdownFadeSlide 0.8s ease-out';
+    
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
+            setTimeout(() => {
+                countdownNumber.textContent = count;
+                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
+            }, 400);
+        } else {
+            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
+            setTimeout(() => {
+                countdownNumber.textContent = 'GO!';
+                countdownText.textContent = 'Start Playing!';
+                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
+            }, 400);
+            
+            setTimeout(() => {
+                countdownOverlay.style.display = 'none';
+                callback();
+            }, 1400);
+            
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
+
+function showProgressiveCountdown(callback) {
+    const countdownOverlay = document.getElementById('countdown-overlay');
+    const countdownNumber = document.querySelector('.countdown-number');
+    const countdownText = document.querySelector('.countdown-text');
+    
+    countdownOverlay.style.display = 'flex';
+    countdownText.textContent = `Next Level: ${gameState.currentProgressiveLevel + 1}×${gameState.currentProgressiveLevel + 1}`;
+    
+    let count = 3;
+    countdownNumber.textContent = count;
+    countdownNumber.style.animation = 'countdownFadeSlide 0.8s ease-out';
+    
+    const countdownInterval = setInterval(() => {
+        count--;
+        if (count > 0) {
+            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
+            setTimeout(() => {
+                countdownNumber.textContent = count;
+                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
+            }, 400);
+        } else {
+            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
+            setTimeout(() => {
+                countdownNumber.textContent = 'GO!';
+                countdownText.textContent = 'Continue!';
+                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
+            }, 400);
+            
+            setTimeout(() => {
+                countdownOverlay.style.display = 'none';
+                callback();
+            }, 1400);
+            
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
+
+// Export the countdown functions
+export { showProgressiveCountdown };

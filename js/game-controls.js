@@ -2,7 +2,8 @@
 import { gameState } from './game-state.js';
 import { checkSolved, isSolvable, setTileColors } from './puzzle-logic.js';
 import { renderPuzzle, renderGoal } from './rendering.js';
-import { startTimer, resetTimer, stopTimer, getCurrentTime } from './timer.js';
+import { startTimer, resetTimer, stopTimer, getCurrentTime, pauseTimer, resumeTimer } from './timer.js';
+import { showProgressiveCountdown } from './ui-handlers.js';
 
 const puzzleContainer = document.getElementById('puzzle-container');
 const congratulationsMessage = document.getElementById('congratulations-message');
@@ -41,6 +42,12 @@ export function shuffleTiles() {
     gameState.isGameOver = false;
     congratulationsMessage.style.display = 'none';
     newGameButton.style.display = 'none';
+    
+    // Reset puzzle highlight
+    puzzleContainer.style.transition = '';
+    puzzleContainer.style.background = '';
+    puzzleContainer.style.border = '';
+    puzzleContainer.style.boxShadow = '';
 
     const fullSet = Array.from({ length: gameState.puzzleSize * gameState.puzzleSize - 1 }, (_, i) => i + 1);
     gameState.tiles = [...fullSet, null];
@@ -117,42 +124,62 @@ export function moveTile(clickedIndex) {
 }
 
 function handlePuzzleSolved() {
+    // Add fade-in background highlight to completed puzzle
+    puzzleContainer.style.transition = 'all 1.2s ease-out';
+    setTimeout(() => {
+        puzzleContainer.style.background = 'linear-gradient(145deg, rgba(34, 139, 34, 0.15), rgba(0, 100, 0, 0.1))';
+        puzzleContainer.style.border = '2px solid rgba(34, 139, 34, 0.4)';
+        puzzleContainer.style.boxShadow = '0 0 20px rgba(34, 139, 34, 0.3), inset 0 0 20px rgba(34, 139, 34, 0.1)';
+    }, 100);
+    
     if (gameState.isProgressiveMode) {
         const currentTime = getCurrentTime();
         const totalTime = currentTime.seconds + (currentTime.minutes * 60);
         const levelTime = totalTime - gameState.levelStartTime;
         gameState.progressiveTimes.push(`${gameState.puzzleSize}×${gameState.puzzleSize}: ${Math.floor(levelTime/60)}:${(levelTime%60).toString().padStart(2,'0')}`);
         
+        // Show completion message
+        congratulationsMessage.innerHTML = `Level ${gameState.puzzleSize}×${gameState.puzzleSize} Complete! Time: ${Math.floor(levelTime/60)}:${(levelTime%60).toString().padStart(2,'0')}`;
+        congratulationsMessage.style.display = 'block';
+        
         if (gameState.currentProgressiveLevel < 7) {
-            // Show progress notification
-            const progressNotification = document.getElementById('progress-notification');
-            progressNotification.style.display = 'block';
+            // Pause timer during transition
+            pauseTimer();
             gameState.isTransitioning = true;
             
             setTimeout(() => {
-                progressNotification.style.display = 'none';
-                gameState.currentProgressiveLevel++;
-                initializePuzzle(gameState.currentProgressiveLevel);
-                shuffleTiles();
-                gameState.isTransitioning = false;
+                congratulationsMessage.style.display = 'none';
+                // Reset puzzle highlight
+                puzzleContainer.style.background = '';
+                puzzleContainer.style.border = '';
+                puzzleContainer.style.boxShadow = '';
+                
+                // Show countdown before next level
+                showProgressiveCountdown(() => {
+                    gameState.currentProgressiveLevel++;
+                    initializePuzzle(gameState.currentProgressiveLevel);
+                    shuffleTiles();
+                    gameState.isTransitioning = false;
+                    // Resume timer without resetting
+                    resumeTimer();
+                });
             }, 2000);
         } else {
             stopTimer();
             const time = getCurrentTime();
-            congratulationsMessage.innerHTML = `<h2>🎉 Progressive Mode Complete! 🎉</h2><p>Total Time: ${time.minutes < 10 ? '0' + time.minutes : time.minutes}:${time.seconds < 10 ? '0' + time.seconds : time.seconds}</p><p>Level Times:<br>${gameState.progressiveTimes.join('<br>')}</p>`;
-            congratulationsMessage.style.display = 'block';
-            newGameButton.style.display = 'block';
-            shuffleButton.style.display = 'none';
-            gameState.isGameOver = true;
+            setTimeout(() => {
+                congratulationsMessage.innerHTML = `Progressive Mode Complete! Total Time: ${time.minutes < 10 ? '0' + time.minutes : time.minutes}:${time.seconds < 10 ? '0' + time.seconds : time.seconds}<br>Level Times:<br>${gameState.progressiveTimes.join('<br>')}`;
+                newGameButton.style.display = 'block';
+                shuffleButton.style.display = 'none';
+                gameState.isGameOver = true;
+            }, 2000);
         }
     } else {
         stopTimer();
+        congratulationsMessage.innerHTML = `Puzzle Complete! Great job solving the ${gameState.puzzleSize}×${gameState.puzzleSize} puzzle!`;
         congratulationsMessage.style.display = 'block';
         newGameButton.style.display = 'block';
         shuffleButton.style.display = 'none';
         gameState.isGameOver = true;
     }
-    
-    // Add celebration effect
-    puzzleContainer.style.animation = 'pulse 0.5s ease-in-out';
 }
