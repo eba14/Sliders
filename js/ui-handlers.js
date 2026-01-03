@@ -102,6 +102,11 @@ function setupGameControls() {
             newGameButton.style.display = 'none';
             shuffleButton.style.display = 'block';
             resetTimer();
+            
+            // Clear game mode selection
+            const difficultyOptions = document.querySelectorAll('.difficulty-option');
+            difficultyOptions.forEach(opt => opt.classList.remove('selected'));
+            difficultySelector.value = '';
         } else {
             // Game in progress, show warning modal
             document.getElementById('leave-game-modal').style.display = 'block';
@@ -128,6 +133,11 @@ function setupLeaveGameModal() {
         shuffleButton.style.display = 'block';
         leaveGameModal.style.display = 'none';
         resetTimer();
+        
+        // Clear game mode selection
+        const difficultyOptions = document.querySelectorAll('.difficulty-option');
+        difficultyOptions.forEach(opt => opt.classList.remove('selected'));
+        difficultySelector.value = '';
     });
 
     cancelLeave.addEventListener('click', () => {
