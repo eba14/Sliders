@@ -21,8 +21,9 @@
 }
 
 html {
-  overscroll-behavior: none;
   overflow-x: hidden;
+  overflow-y: auto;
+  background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
 }
 
 body {
@@ -31,8 +32,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--white);
   min-height: 100vh;
-  overscroll-behavior: none;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body.setup-page {
@@ -40,6 +41,8 @@ body.setup-page {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body.game-page {
