@@ -1,12 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-  color: var(--white);
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+/* Layout styles - body styles moved to base.css to avoid conflicts */
 
 .game-setup {
   min-height: 100vh;

@@ -21,35 +21,58 @@
 }
 
 html {
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
+  overscroll-behavior: none;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Barlow Semi Condensed', sans-serif;
   color: var(--white);
   min-height: 100vh;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: none;
+}
+
+/* Fixed background to prevent white overscroll */
+body::before {
+  content: '';
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 300vh;
+  background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 body.setup-page {
-  background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   overflow-y: auto;
   overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+body.setup-page::before {
+  background: linear-gradient(135deg, var(--dark-red) 0%, #a0001a 50%, var(--primary-red) 100%);
 }
 
 body.game-page {
-  background: linear-gradient(135deg, var(--black) 0%, #333 50%, #666 100%);
   background-attachment: fixed;
   background-size: 110% 110%;
   background-position: -5% -5%;
   height: 100vh;
   overflow: hidden;
+}
+
+body.game-page::before {
+  background: linear-gradient(135deg, var(--black) 0%, #333 50%, #666 100%);
 }
