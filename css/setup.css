@@ -28,7 +28,7 @@
   padding: 25px;
   border-radius: 15px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(220, 20, 60, 0.5);
 }
 
 .quick-start h2, .game-rules h2 {

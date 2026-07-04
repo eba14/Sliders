@@ -1,37 +1,55 @@
 <!-- Rules Modal -->
 <div id="rules-modal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>🎮 How to Play Sliders</h2>
+  <div class="modal-content rules-modal-content">
+    <button class="modal-close-btn" id="close-rules">&times;</button>
+    <div class="modal-header">
+      <h2>How to Play</h2>
+      <p class="modal-subtitle">Master the art of tile-shifting</p>
+    </div>
     <div class="rules-content">
-      <p><strong>Sliders</strong> is a classic sliding puzzle game where you rearrange numbered tiles by sliding them into an empty space.</p>
-      <h3>🎯 Objective</h3>
-      <p>Match the scrambled tiles on the left to the target pattern shown on the right.</p>
-      <h3>🖱️ Controls</h3>
-      <ul>
-        <li>Click tiles adjacent to the empty space to slide them there</li>
-        <li>Only tiles next to the empty space can move</li>
-        <li>Use keyboard: Tab to navigate, Enter/Space to move</li>
-      </ul>
-      <h3>💡 Strategy Tips</h3>
-      <ul>
-        <li>Plan several moves ahead</li>
-        <li>Work on getting one row completed at a time</li>
-        <li>Some positions require temporary "wrong" moves</li>
-        <li>Larger grids need more patience and strategy</li>
-      </ul>
+      <div class="rules-section">
+        <h3>Objective</h3>
+        <p>Rearrange the scrambled tiles on the <strong>Current Board</strong> to match the <strong>Goal Board</strong> by sliding tiles into the empty space.</p>
+      </div>
+      <div class="rules-section">
+        <h3>Controls</h3>
+        <ul>
+          <li>Click any tile adjacent to the empty space to slide it</li>
+          <li>Only tiles directly next to the empty space can move</li>
+          <li>Use <kbd>Tab</kbd> to navigate, <kbd>Enter</kbd> or <kbd>Space</kbd> to move</li>
+        </ul>
+      </div>
+      <div class="rules-section">
+        <h3>Game Modes</h3>
+        <ul>
+          <li><strong>3×3 – 7×7:</strong> Single puzzle of the chosen size</li>
+          <li><strong>Progressive:</strong> Complete all sizes from 3×3 up to 7×7 in sequence — timer runs continuously</li>
+        </ul>
+      </div>
+      <div class="rules-section">
+        <h3>Strategy Tips</h3>
+        <ul>
+          <li>Plan several moves ahead before acting</li>
+          <li>Complete one row or column at a time</li>
+          <li>Sometimes a "wrong" move is needed to unlock progress</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Leave Game Confirmation Modal -->
 <div id="leave-game-modal" class="modal" style="display: none;">
-  <div class="modal-content confirmation-modal">
-    <h2>⚠️ Leave Game?</h2>
-    <p>Are you sure you want to leave the current game? Your progress will be lost.</p>
+  <div class="modal-content leave-modal-content">
+    <button class="modal-close-btn" id="close-leave">&times;</button>
+    <div class="modal-header">
+      <div class="leave-icon">⚠</div>
+      <h2>Leave Game?</h2>
+      <p class="modal-subtitle">Your current progress will be lost.</p>
+    </div>
     <div class="modal-buttons">
-      <button id="confirm-leave" class="confirm-btn">Yes, Leave Game</button>
-      <button id="cancel-leave" class="cancel-btn">Cancel</button>
+      <button id="confirm-leave" class="confirm-btn">Leave Game</button>
+      <button id="cancel-leave" class="cancel-btn">Keep Playing</button>
     </div>
   </div>
 </div>

@@ -109,7 +109,7 @@ function setupGameControls() {
             difficultySelector.value = '';
         } else {
             // Game in progress, show warning modal
-            document.getElementById('leave-game-modal').style.display = 'block';
+            document.getElementById('leave-game-modal').style.display = 'flex';
         }
     });
 }
@@ -123,6 +123,9 @@ function setupLeaveGameModal() {
     const leaveGameModal = document.getElementById('leave-game-modal');
     const confirmLeave = document.getElementById('confirm-leave');
     const cancelLeave = document.getElementById('cancel-leave');
+    const closeLeave = document.getElementById('close-leave');
+
+    const closeLeaveModal = () => { leaveGameModal.style.display = 'none'; };
 
     confirmLeave.addEventListener('click', () => {
         document.body.className = 'setup-page';
@@ -140,27 +143,24 @@ function setupLeaveGameModal() {
         difficultySelector.value = '';
     });
 
-    cancelLeave.addEventListener('click', () => {
-        leaveGameModal.style.display = 'none';
-    });
+    cancelLeave.addEventListener('click', closeLeaveModal);
+    closeLeave.addEventListener('click', closeLeaveModal);
 
     window.addEventListener('click', (event) => {
-        if (event.target === leaveGameModal) {
-            leaveGameModal.style.display = 'none';
-        }
+        if (event.target === leaveGameModal) closeLeaveModal();
     });
 }
 
 function setupRulesModal() {
     const rulesButton = document.getElementById('rules-button');
     const rulesModal = document.getElementById('rules-modal');
-    const closeModal = document.querySelector('.close');
+    const closeRules = document.getElementById('close-rules');
 
     rulesButton.addEventListener('click', () => {
-        rulesModal.style.display = 'block';
+        rulesModal.style.display = 'flex';
     });
 
-    closeModal.addEventListener('click', () => {
+    closeRules.addEventListener('click', () => {
         rulesModal.style.display = 'none';
     });
 
@@ -172,80 +172,53 @@ function setupRulesModal() {
 }
 
 // Countdown functionality
-function showGameStartCountdown(callback) {
+function runCountdown(label, callback, isProgressive = false) {
     const countdownOverlay = document.getElementById('countdown-overlay');
     const countdownNumber = document.querySelector('.countdown-number');
     const countdownText = document.querySelector('.countdown-text');
-    
+
     countdownOverlay.style.display = 'flex';
-    countdownText.textContent = 'Get Ready!';
-    
-    let count = 3;
-    countdownNumber.textContent = count;
-    countdownNumber.style.animation = 'countdownFadeSlide 0.8s ease-out';
-    
-    const countdownInterval = setInterval(() => {
-        count--;
-        if (count > 0) {
-            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
-            setTimeout(() => {
-                countdownNumber.textContent = count;
-                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
-            }, 400);
-        } else {
-            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
-            setTimeout(() => {
-                countdownNumber.textContent = 'GO!';
-                countdownText.textContent = 'Start Playing!';
-                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
-            }, 400);
-            
-            setTimeout(() => {
+    countdownText.textContent = label;
+    countdownText.classList.toggle('progressive', isProgressive);
+
+    const steps = ['3', '2', '1', 'GO!'];
+    let i = 0;
+
+    function showStep() {
+        // Animate in
+        countdownNumber.textContent = steps[i];
+        countdownNumber.classList.remove('animate-out');
+        countdownNumber.classList.add('animate-in');
+
+        const isLast = i === steps.length - 1;
+        const displayDuration = isLast ? 900 : 650;
+
+        setTimeout(() => {
+            if (isLast) {
                 countdownOverlay.style.display = 'none';
                 callback();
-            }, 1400);
-            
-            clearInterval(countdownInterval);
-        }
-    }, 1000);
+            } else {
+                // Animate out then show next
+                countdownNumber.classList.remove('animate-in');
+                countdownNumber.classList.add('animate-out');
+                setTimeout(() => {
+                    i++;
+                    showStep();
+                }, 350);
+            }
+        }, displayDuration);
+    }
+
+    showStep();
+}
+
+function showGameStartCountdown(callback) {
+    runCountdown('Get Ready!', callback, false);
 }
 
 function showProgressiveCountdown(callback) {
-    const countdownOverlay = document.getElementById('countdown-overlay');
-    const countdownNumber = document.querySelector('.countdown-number');
-    const countdownText = document.querySelector('.countdown-text');
-    
-    countdownOverlay.style.display = 'flex';
-    countdownText.textContent = `Next Level: ${gameState.currentProgressiveLevel + 1}×${gameState.currentProgressiveLevel + 1}`;
-    
-    let count = 3;
-    countdownNumber.textContent = count;
-    countdownNumber.style.animation = 'countdownFadeSlide 0.8s ease-out';
-    
-    const countdownInterval = setInterval(() => {
-        count--;
-        if (count > 0) {
-            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
-            setTimeout(() => {
-                countdownNumber.textContent = count;
-                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
-            }, 400);
-        } else {
-            countdownNumber.style.animation = 'countdownSlideDown 0.4s ease-in';
-            setTimeout(() => {
-                countdownNumber.textContent = 'GO!';
-                countdownText.textContent = 'Continue!';
-                countdownNumber.style.animation = 'countdownFadeSlide 0.6s ease-out';
-            }, 400);
-            
-            setTimeout(() => {
-                countdownOverlay.style.display = 'none';
-                callback();
-            }, 1400);
-            
-            clearInterval(countdownInterval);
-        }
-    }, 1000);
+    const nextLevel = gameState.currentProgressiveLevel + 1;
+    runCountdown(`Next: ${nextLevel}×${nextLevel}`, callback, true);
 }
 
 // Export the countdown functions
