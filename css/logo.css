@@ -10,19 +10,66 @@
   margin-bottom: 15px;
 }
 
-.game-logo {
-  max-width: 420px;
-  width: 90%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
-  transition: transform 0.3s ease, filter 0.3s ease;
+/* Hero logo — image flanked by animated tiles */
+.hero-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
 }
 
-.game-logo:hover {
-  transform: scale(1.03);
-  filter: drop-shadow(0 6px 28px rgba(220, 20, 60, 0.5));
+.hero-logo-img {
+  width: min(340px, 58vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* Flanking tile stacks */
+.hero-logo-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-tile {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero-logo-tiles .hero-tile:nth-child(1)  { animation: tileSlideRight 2.4s ease-in-out infinite 0s; }
+.hero-logo-tiles .hero-tile:nth-child(2)  { animation: tileSlideLeft  2.4s ease-in-out infinite 0.2s; }
+.hero-logo-tiles .hero-tile:nth-child(3)  { animation: tileSlideRight 2.4s ease-in-out infinite 0.4s; }
+.hero-logo-tiles .hero-tile:nth-child(4)  { animation: tileSlideLeft  2.4s ease-in-out infinite 0.6s; }
+.hero-logo-tiles .hero-tile:nth-child(5)  { animation: tileSlideRight 2.4s ease-in-out infinite 0.8s; }
+.hero-logo-tiles .hero-tile:nth-child(6)  { animation: tileSlideLeft  2.4s ease-in-out infinite 1.0s; }
+.hero-logo-tiles .hero-tile:nth-child(7)  { animation: tileSlideRight 2.4s ease-in-out infinite 1.2s; }
+.hero-logo-tiles .hero-tile:nth-child(8)  { animation: tileSlideLeft  2.4s ease-in-out infinite 1.4s; }
+.hero-logo-tiles .hero-tile:nth-child(9)  { animation: tileSlideRight 2.4s ease-in-out infinite 1.6s; }
+.hero-logo-tiles .hero-tile:nth-child(10) { animation: tileSlideLeft  2.4s ease-in-out infinite 1.8s; }
+
+.hero-logo-tiles--right .hero-tile:nth-child(1)  { animation: tileSlideLeft  2.4s ease-in-out infinite 0s; }
+.hero-logo-tiles--right .hero-tile:nth-child(2)  { animation: tileSlideRight 2.4s ease-in-out infinite 0.2s; }
+.hero-logo-tiles--right .hero-tile:nth-child(3)  { animation: tileSlideLeft  2.4s ease-in-out infinite 0.4s; }
+.hero-logo-tiles--right .hero-tile:nth-child(4)  { animation: tileSlideRight 2.4s ease-in-out infinite 0.6s; }
+.hero-logo-tiles--right .hero-tile:nth-child(5)  { animation: tileSlideLeft  2.4s ease-in-out infinite 0.8s; }
+.hero-logo-tiles--right .hero-tile:nth-child(6)  { animation: tileSlideRight 2.4s ease-in-out infinite 1.0s; }
+.hero-logo-tiles--right .hero-tile:nth-child(7)  { animation: tileSlideLeft  2.4s ease-in-out infinite 1.2s; }
+.hero-logo-tiles--right .hero-tile:nth-child(8)  { animation: tileSlideRight 2.4s ease-in-out infinite 1.4s; }
+.hero-logo-tiles--right .hero-tile:nth-child(9)  { animation: tileSlideLeft  2.4s ease-in-out infinite 1.6s; }
+.hero-logo-tiles--right .hero-tile:nth-child(10) { animation: tileSlideRight 2.4s ease-in-out infinite 1.8s; }
+
+@keyframes tileSlideRight {
+  0%, 100% { transform: translateX(0);    opacity: 0.5; }
+  50%       { transform: translateX(6px); opacity: 1; }
+}
+
+@keyframes tileSlideLeft {
+  0%, 100% { transform: translateX(0);     opacity: 0.5; }
+  50%       { transform: translateX(-6px); opacity: 1; }
 }
 
 .hero-subtitle {
@@ -30,4 +77,20 @@
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
   font-weight: 300;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-logo {
+    gap: 12px;
+  }
+
+  .hero-tile {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-logo-img {
+    width: min(260px, 62vw);
+  }
 }

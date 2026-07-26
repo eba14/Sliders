@@ -1,10 +1,21 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ffa07a;stop-opacity:1" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b0000"/>
+      <stop offset="100%" style="stop-color:#dc143c"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1"/>
     </linearGradient>
   </defs>
-  <rect width="32" height="32" fill="url(#gradient)" rx="6"/>
-  <text x="16" y="24" font-family="'Arial Black', 'Impact', sans-serif" font-size="22" font-weight="900" text-anchor="middle" fill="white" stroke="#8b0000" stroke-width="1" paint-order="stroke fill">S</text>
+
+  <!-- Background -->
+  <rect width="32" height="32" fill="url(#bg)" rx="6"/>
+
+  <!-- Top arrow sliding right -->
+  <polygon points="6,7 18,7 18,4 26,10 18,16 18,13 6,13" fill="url(#arrow)" opacity="0.5"/>
+
+  <!-- Bottom arrow sliding left -->
+  <polygon points="26,19 14,19 14,16 6,22 14,28 14,25 26,25" fill="url(#arrow)"/>
 </svg>
